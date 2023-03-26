@@ -1,19 +1,14 @@
 import React from "react";
-import logo from "../assets/logo.jpg";
 
 function App() {
   return (
     <div className="app">
-      <img className="app__logo" src={logo} alt="gpr" />
-      <h1 className="app__title">GPR's CRA Template</h1>
-      <a
-        className="app__link"
-        href="https://github.com/gagahpangeran/gpr-cra"
-        target="_blank"
-        rel="nofollow noreferrer"
-      >
-        Use this template on Github
-      </a>
+      <h1 className="app__title">URL Checker</h1>
+      <input
+        className="app__input"
+        type="text"
+        placeholder="Enter your URL here"
+      />
     </div>
   );
 }
