@@ -16,7 +16,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    const DELAY_TIME = 500;
+    const DELAY_TIME = 300;
 
     setIsLoading(true);
 
