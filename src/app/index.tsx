@@ -6,7 +6,8 @@ const description: Record<UrlType, string> = {
   [UrlType.Invalid]: "Invalid URL",
   [UrlType.File]: "This URL is a file",
   [UrlType.Folder]: "This URL is a folder",
-  [UrlType.NotFound]: "This URL does not exist"
+  [UrlType.NotFound]: "This URL does not exist",
+  [UrlType.Error]: "There is something wrong"
 };
 
 function App() {

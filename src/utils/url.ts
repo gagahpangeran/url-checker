@@ -5,7 +5,8 @@ export enum UrlType {
   Invalid,
   File,
   Folder,
-  NotFound
+  NotFound,
+  Error
 }
 
 export function urlValidator(url: string) {
@@ -29,6 +30,7 @@ export function getUrlType(url: string): UrlType {
 
   try {
     const { type } = getUrl(url);
+
     switch (type) {
       case "file":
         return UrlType.File;
@@ -37,7 +39,7 @@ export function getUrlType(url: string): UrlType {
         return UrlType.Folder;
 
       default:
-        return UrlType.NotFound;
+        return UrlType.Error;
     }
   } catch (err) {
     if (err instanceof Error && err.message === "Not Found") {
@@ -45,5 +47,5 @@ export function getUrlType(url: string): UrlType {
     }
   }
 
-  return UrlType.NotFound;
+  return UrlType.Error;
 }
