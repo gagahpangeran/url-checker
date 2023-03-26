@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { urlChecker, urlValidator } from "../utils/url";
+import { UrlType, urlChecker, urlValidator } from "../utils/url";
 
-enum UrlState {
-  Idle,
-  Invalid,
-  File,
-  Folder,
-  NotFound
-}
-
-const description: Record<UrlState, string> = {
-  [UrlState.Idle]: "Please enter a valid URL",
-  [UrlState.Invalid]: "Invalid URL",
-  [UrlState.File]: "This URL is a file",
-  [UrlState.Folder]: "This URL is a folder",
-  [UrlState.NotFound]: "This URL does not exist"
+const description: Record<UrlType, string> = {
+  [UrlType.Empty]: "Please enter a valid URL",
+  [UrlType.Invalid]: "Invalid URL",
+  [UrlType.File]: "This URL is a file",
+  [UrlType.Folder]: "This URL is a folder",
+  [UrlType.NotFound]: "This URL does not exist"
 };
 
 function App() {
   const [url, setUrl] = useState<string>("");
-  const [urlState, setUrlState] = useState<UrlState>(UrlState.Idle);
+  const [urlState, setUrlState] = useState<UrlType>(UrlType.Empty);
 
   useEffect(() => {
     const DELAY_TIME = 500;
 
     const handler = setTimeout(() => {
       if (url === "") {
-        setUrlState(UrlState.Idle);
+        setUrlState(UrlType.Empty);
         return;
       }
 
@@ -34,23 +26,23 @@ function App() {
         const type = urlChecker(url);
         switch (type) {
           case "file":
-            setUrlState(UrlState.File);
+            setUrlState(UrlType.File);
             break;
 
           case "folder":
-            setUrlState(UrlState.Folder);
+            setUrlState(UrlType.Folder);
             break;
 
           case "not found":
-            setUrlState(UrlState.NotFound);
+            setUrlState(UrlType.NotFound);
             break;
 
           default:
-            setUrlState(UrlState.NotFound);
+            setUrlState(UrlType.NotFound);
             break;
         }
       } else {
-        setUrlState(UrlState.Invalid);
+        setUrlState(UrlType.Invalid);
       }
     }, DELAY_TIME);
 

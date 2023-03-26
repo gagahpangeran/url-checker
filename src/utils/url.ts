@@ -1,5 +1,13 @@
 import getUrl from "../server/mockServer";
 
+export enum UrlType {
+  Empty,
+  Invalid,
+  File,
+  Folder,
+  NotFound
+}
+
 export function urlValidator(url: string) {
   try {
     const { protocol } = new URL(url);
