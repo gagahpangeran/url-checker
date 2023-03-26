@@ -6,16 +6,18 @@
   height: 100vh;
 
   &__title {
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 20px;
   }
 
   &__input {
-    font-size: 24px;
+    font-size: 20px;
     border: 2px solid #fff;
     border-radius: 8px;
     padding: 4px;
     transition: 100ms border ease-in;
+    box-sizing: border-box;
+    width: 300px;
 
     &:focus {
       outline: none;
