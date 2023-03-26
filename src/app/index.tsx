@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import urlChecker from "../utils/checker";
 import { urlValidator } from "../utils/validator";
 
@@ -19,39 +19,46 @@ const description: Record<UrlState, string> = {
 };
 
 function App() {
+  const [url, setUrl] = useState<string>("");
   const [urlState, setUrlState] = useState<UrlState>(UrlState.Idle);
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const url = e.target.value;
+  useEffect(() => {
+    const DELAY_TIME = 500;
 
-    if (url === "") {
-      setUrlState(UrlState.Idle);
-      return;
-    }
-
-    if (urlValidator(url)) {
-      const type = urlChecker(url);
-      switch (type) {
-        case "file":
-          setUrlState(UrlState.File);
-          break;
-
-        case "folder":
-          setUrlState(UrlState.Folder);
-          break;
-
-        case "not found":
-          setUrlState(UrlState.NotFound);
-          break;
-
-        default:
-          setUrlState(UrlState.NotFound);
-          break;
+    const handler = setTimeout(() => {
+      if (url === "") {
+        setUrlState(UrlState.Idle);
+        return;
       }
-    } else {
-      setUrlState(UrlState.Invalid);
-    }
-  };
+
+      if (urlValidator(url)) {
+        const type = urlChecker(url);
+        switch (type) {
+          case "file":
+            setUrlState(UrlState.File);
+            break;
+
+          case "folder":
+            setUrlState(UrlState.Folder);
+            break;
+
+          case "not found":
+            setUrlState(UrlState.NotFound);
+            break;
+
+          default:
+            setUrlState(UrlState.NotFound);
+            break;
+        }
+      } else {
+        setUrlState(UrlState.Invalid);
+      }
+    }, DELAY_TIME);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [url]);
 
   return (
     <div className="app">
@@ -60,7 +67,7 @@ function App() {
         className="app__input"
         type="text"
         placeholder="Enter your URL here"
-        onChange={handleOnChange}
+        onChange={e => setUrl(e.target.value)}
       />
       <div className="app__description">{description[urlState]}</div>
     </div>
