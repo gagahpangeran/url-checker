@@ -13,13 +13,17 @@ const description: Record<UrlType, string> = {
 function App() {
   const [url, setUrl] = useState<string>("");
   const [urlState, setUrlState] = useState<UrlType>(UrlType.Empty);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const DELAY_TIME = 500;
 
+    setIsLoading(true);
+
     const handler = setTimeout(async () => {
       const type = await getUrlType(url);
       setUrlState(type);
+      setIsLoading(false);
     }, DELAY_TIME);
 
     return () => {
@@ -37,7 +41,7 @@ function App() {
         onChange={e => setUrl(e.target.value)}
       />
       <div className="app__description">
-        <div className="app__spinner" />
+        {isLoading && <div className="app__spinner" />}
         {description[urlState]}
       </div>
     </div>
