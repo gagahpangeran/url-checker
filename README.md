@@ -1,17 +1,25 @@
-# GPR's Create React App Template
+# URL Checker
 
-Starter boilerplate template for GPR's project.
+A very simple URL checker
 
-_Note: This template may not suit for you_
+## How to run
 
-## Feature
+- Install `yarn` or `npm`
 
-- Create React App template.
-- SASS integration.
-- Eslint and Prettier integration.
-- Pre-commit hooks.
-- Github action test and lint workflows.
-- Github action deploy to netlify integration.
+  This project is using `yarn`, but you can also running it using `npm`.
+
+- Install dependencies using command `yarn` or `npm install`.
+
+- Run development server using command `yarn start` or `npm run start`.
+
+- Build the project using command `yarn build` or `npm run build`.
+
+### Another command
+
+- `yarn test` or `npm run test` to run the test.
+- `yarn format` or `npm run format` to run the code formatter.
+- `yarn lint` or `npm run lint` to run the linter to check the code style.
+- `yarn type-check` or `npm run type-check` to run the typescript type checker.
 
 ## License
 
