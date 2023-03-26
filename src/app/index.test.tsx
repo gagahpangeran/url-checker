@@ -3,6 +3,6 @@ import App from "./index";
 
 test("render page", () => {
   render(<App />);
-  const element = screen.getByText("GPR's CRA Template");
+  const element = screen.getByText("URL Checker");
   expect(element).toBeInTheDocument();
 });
