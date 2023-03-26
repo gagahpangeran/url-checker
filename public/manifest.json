@@ -1,6 +1,6 @@
 {
-  "short_name": "GPR's CRA",
-  "name": "GPR's create react app template",
+  "short_name": "URL Checker",
+  "name": "Very simple URL checker",
   "icons": [
     {
       "src": "favicon.ico",
