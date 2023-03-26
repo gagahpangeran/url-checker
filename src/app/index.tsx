@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UrlType, urlChecker, urlValidator } from "../utils/url";
+import { UrlType, getUrlType } from "../utils/url";
 
 const description: Record<UrlType, string> = {
   [UrlType.Empty]: "Please enter a valid URL",
@@ -17,33 +17,8 @@ function App() {
     const DELAY_TIME = 500;
 
     const handler = setTimeout(() => {
-      if (url === "") {
-        setUrlState(UrlType.Empty);
-        return;
-      }
-
-      if (urlValidator(url)) {
-        const type = urlChecker(url);
-        switch (type) {
-          case "file":
-            setUrlState(UrlType.File);
-            break;
-
-          case "folder":
-            setUrlState(UrlType.Folder);
-            break;
-
-          case "not found":
-            setUrlState(UrlType.NotFound);
-            break;
-
-          default:
-            setUrlState(UrlType.NotFound);
-            break;
-        }
-      } else {
-        setUrlState(UrlType.Invalid);
-      }
+      const type = getUrlType(url);
+      setUrlState(type);
     }, DELAY_TIME);
 
     return () => {
