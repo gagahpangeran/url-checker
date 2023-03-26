@@ -14,12 +14,14 @@ const urlList: UrlType[] = [
   }
 ];
 
-export default function getUrl(url: string) {
+export default function getUrl(url: string): Promise<UrlType> {
   const result = urlList.find(u => u.url === url);
 
   if (result === undefined) {
     throw Error("Not Found");
   }
 
-  return result;
+  return new Promise(resolve => {
+    resolve(result);
+  });
 }
