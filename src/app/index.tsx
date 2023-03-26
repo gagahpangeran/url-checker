@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import urlChecker from "../utils/checker";
 import { urlValidator } from "../utils/validator";
 
 enum UrlState {
@@ -29,7 +30,24 @@ function App() {
     }
 
     if (urlValidator(url)) {
-      setUrlState(UrlState.NotExist);
+      const type = urlChecker(url);
+      switch (type) {
+        case "file":
+          setUrlState(UrlState.File);
+          break;
+
+        case "folder":
+          setUrlState(UrlState.Folder);
+          break;
+
+        case "not found":
+          setUrlState(UrlState.NotFound);
+          break;
+
+        default:
+          setUrlState(UrlState.NotFound);
+          break;
+      }
     } else {
       setUrlState(UrlState.Invalid);
     }
