@@ -45,6 +45,8 @@ jobs:
     needs: deploy
     name: Create release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout master
         uses: actions/checkout@v3
