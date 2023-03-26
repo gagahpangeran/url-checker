@@ -17,8 +17,8 @@ function App() {
   useEffect(() => {
     const DELAY_TIME = 500;
 
-    const handler = setTimeout(() => {
-      const type = getUrlType(url);
+    const handler = setTimeout(async () => {
+      const type = await getUrlType(url);
       setUrlState(type);
     }, DELAY_TIME);
 

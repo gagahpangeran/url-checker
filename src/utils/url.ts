@@ -18,7 +18,7 @@ export function urlValidator(url: string) {
   }
 }
 
-export function getUrlType(url: string): UrlType {
+export async function getUrlType(url: string) {
   if (url === "") {
     return UrlType.Empty;
   }
@@ -29,7 +29,7 @@ export function getUrlType(url: string): UrlType {
   }
 
   try {
-    const { type } = getUrl(url);
+    const { type } = await getUrl(url);
 
     switch (type) {
       case "file":
