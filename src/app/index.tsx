@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import urlChecker from "../utils/checker";
-import { urlValidator } from "../utils/validator";
+import { urlChecker, urlValidator } from "../utils/url";
 
 enum UrlState {
   Idle,

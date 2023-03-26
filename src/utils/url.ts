@@ -1,8 +1,17 @@
 import getUrl from "../server/mockServer";
 
+export function urlValidator(url: string) {
+  try {
+    const { protocol } = new URL(url);
+    return protocol === "http:" || protocol === "https:";
+  } catch (err) {
+    return false;
+  }
+}
+
 type ResultType = "file" | "folder" | "not found" | undefined;
 
-export default function urlChecker(url: string): ResultType {
+export function urlChecker(url: string): ResultType {
   try {
     const { type } = getUrl(url);
     return type;

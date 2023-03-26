@@ -1,4 +1,4 @@
-import { urlValidator } from "./validator";
+import { urlValidator } from "./url";
 
 describe("Test URL validator", () => {
   it("should accept URL starts with https", () => {
