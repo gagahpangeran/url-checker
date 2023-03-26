@@ -36,7 +36,10 @@ function App() {
         placeholder="Enter your URL here"
         onChange={e => setUrl(e.target.value)}
       />
-      <div className="app__description">{description[urlState]}</div>
+      <div className="app__description">
+        <div className="app__spinner" />
+        {description[urlState]}
+      </div>
     </div>
   );
 }

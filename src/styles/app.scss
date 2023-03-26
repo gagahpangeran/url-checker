@@ -27,4 +27,27 @@
     margin-top: 20px;
     font-size: 16px;
   }
+
+  &__spinner {
+    --size: 16px;
+    --margin: 4px;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    background-image: url("../assets/spinner.svg");
+    background-size: var(--size) var(--size);
+    animation: spin 1.5s linear infinite;
+    margin-left: calc(-1 * var(--size) - var(--margin));
+    margin-right: var(--margin);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
