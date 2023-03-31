@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UrlType, getUrlType, urlValidator } from "../utils/url";
+import { UrlType, getUrlType, validateUrl } from "../utils/url";
 
 const description: Record<UrlType, string> = {
   [UrlType.Empty]: "Please enter a valid URL",
@@ -21,7 +21,7 @@ function App() {
       return;
     }
 
-    if (!urlValidator(url)) {
+    if (!validateUrl(url)) {
       setUrlState(UrlType.Invalid);
       return;
     }

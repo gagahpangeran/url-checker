@@ -9,7 +9,7 @@ export enum UrlType {
   Error
 }
 
-export function urlValidator(url: string) {
+export function validateUrl(url: string) {
   try {
     const { protocol } = new URL(url);
     return protocol === "http:" || protocol === "https:";
