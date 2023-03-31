@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UrlType, getUrlType } from "../utils/url";
+import { UrlType, getUrlType, urlValidator } from "../utils/url";
 
 const description: Record<UrlType, string> = {
   [UrlType.Empty]: "Please enter a valid URL",
@@ -16,6 +16,16 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    if (url === "") {
+      setUrlState(UrlType.Empty);
+      return;
+    }
+
+    if (!urlValidator(url)) {
+      setUrlState(UrlType.Invalid);
+      return;
+    }
+
     const DELAY_TIME = 300;
 
     setIsLoading(true);

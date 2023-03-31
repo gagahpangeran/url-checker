@@ -19,15 +19,6 @@ export function urlValidator(url: string) {
 }
 
 export async function getUrlType(url: string) {
-  if (url === "") {
-    return UrlType.Empty;
-  }
-
-  const isValid = urlValidator(url);
-  if (!isValid) {
-    return UrlType.Invalid;
-  }
-
   try {
     const { type } = await getUrl(url);
 
