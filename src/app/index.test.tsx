@@ -46,10 +46,8 @@ test("check invalid URL", async () => {
 
   fireEvent.change(input, { target: { value: "htt" } });
 
-  await waitFor(() => {
-    const description = getByText("Invalid URL");
-    expect(description).toBeInTheDocument();
-  });
+  const description = getByText("Invalid URL");
+  expect(description).toBeInTheDocument();
 });
 
 test("check URL does not exist", async () => {
