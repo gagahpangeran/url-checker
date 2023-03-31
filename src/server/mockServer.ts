@@ -21,7 +21,5 @@ export default function getUrl(url: string): Promise<UrlType> {
     throw Error("Not Found");
   }
 
-  return new Promise(resolve => {
-    resolve(result);
-  });
+  return Promise.resolve(result);
 }
