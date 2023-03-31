@@ -41,8 +41,13 @@ function App() {
         onChange={e => setUrl(e.target.value)}
       />
       <div className="app__description">
-        {isLoading && <div className="app__spinner" />}
-        {description[urlState]}
+        {isLoading ? (
+          <>
+            <div className="app__spinner" /> Checking the URL
+          </>
+        ) : (
+          description[urlState]
+        )}
       </div>
     </div>
   );
