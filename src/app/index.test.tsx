@@ -32,12 +32,12 @@ test("check input text show correct value", async () => {
   expect(input.value).toBe("https://example.com");
 });
 
-test("check description does not immediately change", async () => {
+test("check checking the URL", async () => {
   const { input, getByText } = setup();
 
   fireEvent.change(input, { target: { value: "https://example.com" } });
 
-  const description = getByText("Please enter a valid URL");
+  const description = getByText("Checking the URL");
   expect(description).toBeInTheDocument();
 });
 
